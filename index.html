@@ -6,12 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mi Primer Proyecto de VUE</title>
   <script src="https://unpkg.com/vue@next"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
   <!-- Main -->
   <div id="app">
-    <h1>{{ titulo }}</h1>
-    <h2>Mi saldo inicial es de: {{ cantidad }}</h2>
+    <h1 class="text-center mt-4 mb-4 pt-4 pb-4">{{ textoMayuscula }}</h1>
+    <h1 class="text-center">Idalid Avila Camargo :D</h1>
+    <h2 class="bg-dark"
+        :class="colorCantidad">
+          Mi saldo inicial es de: {{ cantidad }}
+    </h2>
     <!--
     <a v-bind:href="enlace">Visita la UG</a>
     <br>
@@ -22,7 +27,7 @@
     <h2 v-else>Cuenta Desactivada</h2>
     <hr/>
     <h2 v-if="cantidad > 500">Cantidad: {{ cantidad }}</h2>
-    <h2 v-else>
+    <h2 v-else-if="cantidad <= 500 && cantidad > 0">
       Cantidad: 
       <span style="color: red;">{{ cantidad }}</span>
     </h2>
@@ -37,11 +42,15 @@
       <li v-for="(item, index) in servicios" :key="index">{{ index }} - {{ item }}</li>
     </ul>
     <hr/>
-    <button v-on:click="agregarSaldo">Agregar Saldo</button>
+    <button v-on:click="agregarSaldo(25)">Agregar Saldo</button> | 
+    <button @click="disminuirSaldo" :disabled="desactivar">Disminuir Saldo</button>
+    <hr/>
+    <footer-practica/>
   </div>
 
   <!-- Scripts -->
   <script src="main.js"></script>
+  <script src="components/Footer.js"></script>
   <script>
     const mountedApp = app.mount('#app');
   </script>
