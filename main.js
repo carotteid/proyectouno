@@ -1,8 +1,16 @@
 const app = Vue.createApp({
-  data(){
+  data() {
     return{
-      titulo: 'Este es mi primer proyecto con VUE.JS',
-      cantidad: 40
+      titulo: 'Proyecto Operaciones y Componentes VueJs',
+      cantidad: 500,
+      enlace: "https://www.ugto.mx",
+      estado: true,
+      servicios: ['transferencias', 'pagos', 'giros'],
     };
+  },
+  methods:{
+    agregarSaldo() {
+      this.cantidad = this.cantidad + 50;
+    },
   },
 });

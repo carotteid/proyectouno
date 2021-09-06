@@ -8,10 +8,39 @@
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
+  <!-- Main -->
   <div id="app">
     <h1>{{ titulo }}</h1>
-    <h2>{{ cantidad > 30 ? 'Es un chavo ruco' : 'Eres un centenial'}}</h2>
+    <h2>Mi saldo inicial es de: {{ cantidad }}</h2>
+    <!--
+    <a v-bind:href="enlace">Visita la UG</a>
+    <br>
+    -->
+    <a :href="enlace">Enlace UG</a>
+    <hr/>
+    <h2 v-if="estado">Cuenta Activa</h2>
+    <h2 v-else>Cuenta Desactivada</h2>
+    <hr/>
+    <h2 v-if="cantidad > 500">Cantidad: {{ cantidad }}</h2>
+    <h2 v-else>
+      Cantidad: 
+      <span style="color: red;">{{ cantidad }}</span>
+    </h2>
+    <h2 v-else>Sin cantidad: {{ cantidad }}</h2>
+    <hr/>
+    <h3>Los servicios que tenemos son:</h3>
+    <ul>
+      <li v-for="item in servicios">{{ item }}</li>
+    </ul>
+    <hr/>
+    <ul>
+      <li v-for="(item, index) in servicios" :key="index">{{ index }} - {{ item }}</li>
+    </ul>
+    <hr/>
+    <button v-on:click="agregarSaldo">Agregar Saldo</button>
   </div>
+
+  <!-- Scripts -->
   <script src="main.js"></script>
   <script>
     const mountedApp = app.mount('#app');
